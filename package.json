@@ -1,0 +1,26 @@
+{
+  "name": "http-response-middleware",
+  "version": "0.0.1",
+  "description": "Node.js response middleware to provide a standard response output",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielemoraschi/express-http-response"
+  },
+  "keywords": [
+    "express",
+    "expressjs",
+    "middleware",
+    "http",
+    "http response",
+    "json"
+  ],
+  "author": "Daniele Moraschi <daniele.moraschi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielemoraschi/express-http-response/issues"
+  }
+}
