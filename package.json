@@ -3,9 +3,6 @@
   "version": "0.0.2",
   "description": "Node.js response middleware to provide a standard response output",
   "main": "./lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/danielemoraschi/express-http-response"
@@ -22,5 +19,13 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/danielemoraschi/express-http-response/issues"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
+  },
+  "scripts": {
+    "prepublish": "npm prune",
+    "test": "mocha --reporter spec --bail --check-leaks --require test/support/should test/"
   }
 }
