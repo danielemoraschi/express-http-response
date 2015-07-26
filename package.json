@@ -1,6 +1,6 @@
 {
   "name": "http-response-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js response middleware to provide a standard response output",
   "main": "./lib/index.js",
   "scripts": {
