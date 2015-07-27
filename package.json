@@ -1,6 +1,6 @@
 {
   "name": "express-http-response",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Node.js response middleware to provide a standard response output",
   "main": "./lib/index.js",
   "repository": {

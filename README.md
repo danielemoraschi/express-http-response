@@ -39,6 +39,17 @@ app.get('/users', function(req, res, next) {
 
     if (req.missing_parameter) {
         throw new BadRequestResponse('Missing required parameter.');
+        /**
+        which will return:
+        Header status code: 400
+        {
+            type: "BadRequestResponse",
+            message: "Missing required parameter.",
+            status: 400,
+            success: false
+        }
+        logging to console.error
+        */
     }
 
     next(new OkResponse({
@@ -46,6 +57,22 @@ app.get('/users', function(req, res, next) {
         page: 1,
         total: 42
     }));
+
+    /**
+    which will return:
+    Header status code: 200
+    {
+        type: "OkResponse",
+        message: "OK",
+        status: 200,
+        success: true,
+        data: {
+            users: { },
+            page: 1,
+            total: 42
+        }
+    }
+    */
 
 });
 
@@ -58,7 +85,6 @@ app.listen(3000);
 ## License
 
 [MIT][license-url]
-
 
 [npm-image]: https://img.shields.io/npm/v/express-http-response.svg?style=flat
 [npm-url]: https://npmjs.org/package/express-http-response
