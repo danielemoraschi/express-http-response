@@ -59,12 +59,13 @@ app.listen(3000);
 
 [MIT][license-url]
 
+
 [npm-image]: https://img.shields.io/npm/v/express-http-response.svg?style=flat
 [npm-url]: https://npmjs.org/package/express-http-response
-[travis-image]: https://img.shields.io/travis/expressjs/express-http-response.svg?style=flat
-[travis-url]: https://travis-ci.org/expressjs/express-http-response
-[coveralls-image]: https://img.shields.io/coveralls/expressjs/express-http-response.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/expressjs/express-http-response?branch=master
+[travis-image]: https://img.shields.io/travis/danielemoraschi/express-http-response.svg?style=flat
+[travis-url]: https://travis-ci.org/danielemoraschi/express-http-response
+[coveralls-image]: https://img.shields.io/coveralls/danielemoraschi/express-http-response.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/danielemoraschi/express-http-response?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/express-http-response.svg?style=flat
 [downloads-url]: https://npmjs.org/package/express-http-response
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
