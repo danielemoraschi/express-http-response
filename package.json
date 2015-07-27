@@ -22,10 +22,12 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "istanbul": "^0.3.0"
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha --reporter spec --bail --check-leaks --require test/support/should test/"
+    "test": "mocha --reporter spec --bail --check-leaks --require test/support/should test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks --require test/support/should test/"
   }
 }
