@@ -37,7 +37,7 @@ var app = express();
 
 app.get('/users', function(req, res, next) {
 
-    if (!req.missing_parameter) {
+    if (req.missing_parameter) {
         throw new BadRequestResponse('Missing required parameter.');
     }
 
