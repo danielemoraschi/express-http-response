@@ -14,6 +14,64 @@
 npm install --save http-response-middleware
 ```
 
+## Example
+
+```js
+// # app.js
+var express = require('express');
+var httpResponse = require('express-http-response');
+
+var BadRequestResponse = httpResponse.BadRequestResponse;
+var OkResponse = httpResponse.OkResponse;
+var app = express();
+
+app.get('/users', function(req, res, next) {
+
+    if (req.missing_parameter) {
+        throw new BadRequestResponse('Missing required parameter.');
+        /**
+        which will return:
+        Header status code: 400
+        {
+            type: "BadRequestResponse",
+            message: "Missing required parameter.",
+            status: 400,
+            success: false
+        }
+        logging to console.error
+        */
+    }
+
+    next(new OkResponse({
+        users: { /* ... */ },
+        page: 1,
+        total: 42
+    }));
+
+    /**
+    which will return:
+    Header status code: 200
+    {
+        type: "OkResponse",
+        message: "OK",
+        status: 200,
+        success: true,
+        data: {
+            users: { },
+            page: 1,
+            total: 42
+        }
+    }
+    */
+
+});
+
+// keep this after all routes that will use the response object
+app.use(httpResponse.Middleware);
+
+app.listen(3000);
+```
+
 ## API
 
 ### `Middleware`
@@ -193,64 +251,6 @@ response == {
     success: false            // Boolean
 }
 */
-```
-
-## Example
-
-```js
-// # app.js
-var express = require('express');
-var httpResponse = require('express-http-response');
-
-var BadRequestResponse = httpResponse.BadRequestResponse;
-var OkResponse = httpResponse.OkResponse;
-var app = express();
-
-app.get('/users', function(req, res, next) {
-
-    if (req.missing_parameter) {
-        throw new BadRequestResponse('Missing required parameter.');
-        /**
-        which will return:
-        Header status code: 400
-        {
-            type: "BadRequestResponse",
-            message: "Missing required parameter.",
-            status: 400,
-            success: false
-        }
-        logging to console.error
-        */
-    }
-
-    next(new OkResponse({
-        users: { /* ... */ },
-        page: 1,
-        total: 42
-    }));
-
-    /**
-    which will return:
-    Header status code: 200
-    {
-        type: "OkResponse",
-        message: "OK",
-        status: 200,
-        success: true,
-        data: {
-            users: { },
-            page: 1,
-            total: 42
-        }
-    }
-    */
-
-});
-
-// keep this after all routes that will use the response object
-app.use(httpResponse.Middleware);
-
-app.listen(3000);
 ```
 
 ## License
