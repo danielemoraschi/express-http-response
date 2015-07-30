@@ -195,7 +195,6 @@ response == {
 */
 ```
 
-
 ## Example
 
 ```js
