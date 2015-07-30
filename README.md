@@ -16,13 +16,185 @@ npm install --save http-response-middleware
 
 ## API
 
+### `Middleware`
+
+The middleware will parse the thrown response returning to the user with a standard json response.
+
 ```js
 var httpResponse = require('express-http-response');
+var express = require('express');
+var app = express();
+
+/** [app routes] */
+
+app.use(httpResponse.Middleware);
 ```
 
-### httpResponse.Middleware()
+### `HttpResponse`
 
-The middleware parse the thrown response returning to the user with a standard json response, supplied with values for `http status code`, `message`, `success`, `error code`, `more info`, and `json data`.
+```js
+var HttpResponse = require('express-http-response').HttpResponse;
+
+var response = new HttpResponse (data, message, httpStatusCode, errorCode, moreInfo, success);
+
+/*
+response == {
+    type: "HttpResponse",     // String
+    data: `data`,             // Mixed/Object | not present if undefined
+    message: `message`,       // String
+    status: `httpStatusCode`, // Int
+    code: `errorCode`,        // Mixed/Object | not present if undefined
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: `success`        // Boolean, false by default
+}
+*/
+```
+
+### `OkResponse`
+
+```js
+var OkResponse = require('express-http-response').OkResponse;
+
+var response = new OkResponse (data, message, moreInfo);
+
+/*
+response == {
+    type: "OkResponse",       // String
+    data: `data`,             // Mixed/Object | not present if undefined
+    message: `message`,       // String
+    status: 200,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: true             // Boolean
+}
+*/
+```
+
+### `BadRequestResponse`
+
+```js
+var BadRequestResponse = require('express-http-response').BadRequestResponse;
+
+var response = new BadRequestResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "BadRequestResponse", // String
+    message: `message`,       // String
+    status: 400,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `UnauthorizedResponse`
+
+```js
+var UnauthorizedResponse = require('express-http-response').UnauthorizedResponse;
+
+var response = new UnauthorizedResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "UnauthorizedResponse", // String
+    message: `message`,       // String
+    status: 401,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `ForbiddenResponse`
+
+```js
+var ForbiddenResponse = require('express-http-response').ForbiddenResponse;
+
+var response = new ForbiddenResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "ForbiddenResponse", // String
+    message: `message`,       // String
+    status: 403,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `NotFoundResponse`
+
+```js
+var NotFoundResponse = require('express-http-response').NotFoundResponse;
+
+var response = new NotFoundResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "NotFoundResponse", // String
+    message: `message`,       // String
+    status: 404,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `MethodNotAllowedResponse`
+
+```js
+var MethodNotAllowedResponse = require('express-http-response').MethodNotAllowedResponse;
+
+var response = new MethodNotAllowedResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "MethodNotAllowedResponse", // String
+    message: `message`,       // String
+    status: 405,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `ConflictResponse`
+
+```js
+var ConflictResponse = require('express-http-response').ConflictResponse;
+
+var response = new ConflictResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "ConflictResponse", // String
+    message: `message`,       // String
+    status: 409,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
+### `InternalServerErrorResponse`
+
+```js
+var InternalServerErrorResponse = require('express-http-response').InternalServerErrorResponse;
+
+var response = new InternalServerErrorResponse (message, errorCode, moreInfo);
+
+/*
+response == {
+    type: "InternalServerErrorResponse", // String
+    message: `message`,       // String
+    status: 500,              // Int
+    moreInfo: `moreInfo`,     // Mixed/Object | not present if undefined
+    success: false            // Boolean
+}
+*/
+```
+
 
 ## Example
 
