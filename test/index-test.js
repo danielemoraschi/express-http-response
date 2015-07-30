@@ -1,5 +1,5 @@
 var HttpResponses = require('../lib/index');
-var Middleware = require('../lib/index').HttpResponseMiddleware;
+var Middleware = require('../lib/index').Middleware;
 var util = require('util');
 var assert = require('assert');
 
@@ -110,4 +110,42 @@ describe('Http Responses', function() {
         });
 
     });
+
+    describe('HttpResponseMiddleware', function() {
+
+        it('should match the expected result', function() {
+            var name, req, res, next, response;
+            for (var i = 0; i < responses.length; i++) {
+
+                name = responses[i];
+                req = {};
+                res = {
+                    status: function (status) {
+                        this.status = status;
+                        var self = this;
+                        return {
+                            send: function (response) {
+                                self.response = response;
+                            }
+                        }
+                    }
+                };
+                next = function () {};
+
+                console.info('checking ' + name);
+                response = new HttpResponses[name]();
+
+                Middleware(response, req, res, next);
+
+                assert.equal(res.response, response);
+
+                if (statuses[name].status) {
+                    assert.equal(res.status, response.status);
+                    assert.equal(res.status, statuses[name].status);
+                }
+            }
+        });
+
+    });
+
 });
